@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}{{ user.username }} - Profile{% endblock %}
+
+{% block content %}
+<div class="profile-container">
+    <div class="profile-header">
+        <h1>👤 {{ user.get_full_name|default:user.username }}'s Profile</h1>
+        <p class="profile-meta">@{{ user.username }} | {{ user.email }}</p>
+        <div class="profile-actions">
+            <a href="{% url 'accounts:create_post' %}" class="btn btn-primary">+ New Post</a>
+            <a href="{% url 'accounts:logout' %}" class="btn btn-secondary">Logout</a>
+        </div>
+    </div>
+    
+    <div class="profile-section">
+        <h2>📝 Your Posts ({{ post_count }})</h2>
+        
+        {% if posts %}
+            <div class="user-posts">
+                {% for post in posts %}
+                    <div class="user-post-card">
+                        <h3>{{ post.title }}</h3>
+                        <p class="post-date">{{ post.created_at|date:"M d, Y" }}</p>
+                        <p class="post-excerpt">{{ post.content|truncatechars:150 }}</p>
+                        <div class="post-categories">
+                            {% for cat in post.categories.all %}
+                                <span class="badge">{{ cat.name }}</span>
+                            {% endfor %}
+                        </div>
+                        <div class="post-actions">
+                            <a href="{% url 'accounts:edit_post' post.id %}" class="btn btn-small btn-warning">Edit</a>
+                            <a href="{% url 'accounts:delete_post' post.id %}" class="btn btn-small btn-danger">Delete</a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p class="no-posts">You haven't created any posts yet. <a href="{% url 'accounts:create_post' %}">Create one now!</a></p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
