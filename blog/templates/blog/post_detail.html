@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block content %}
+<div class="post-detail">
+    <a href="{% url 'blog:post_list' %}" class="back-link">← Back to Posts</a>
+    
+    <article>
+        <h1 class="post-title">{{ post.title }}</h1>
+        
+        <div class="post-meta">
+            <p>
+                By <strong>{{ post.author.name }}</strong> • 
+                Published {{ post.created_at|date:"F d, Y" }}
+                {% if post.updated_at != post.created_at %}
+                    • Updated {{ post.updated_at|date:"F d, Y" }}
+                {% endif %}
+            </p>
+        </div>
+
+        {% if post.categories.all %}
+            <div class="post-categories">
+                <strong>Categories:</strong>
+                {% for category in post.categories.all %}
+                    <span class="badge">{{ category.name }}</span>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        <div class="post-content">
+            {{ post.content }}
+        </div>
+    </article>
+
+    <a href="{% url 'blog:post_list' %}" class="back-link">← Back to Posts</a>
+</div>
+{% endblock %}
