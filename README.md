@@ -2,6 +2,10 @@
 
 This project extends the blog application by adding user authentication features, including user registration, login, and logout.
 
+## Technology Stack
+- Python
+- Django
+
 ## Features
 
 -   **User Registration**: New users can sign up for an account.
@@ -22,7 +26,7 @@ This project extends the blog application by adding user authentication features
     ```bash
     pip install -r requirements.txt
     ```
-    *(Assuming a requirements.txt file exists. If not, you will need to install Django)*
+    *(Create a requirements.txt file if one does not exist: `pip freeze > requirements.txt`)*
 4.  **Apply migrations:**
     ```bash
     python manage.py migrate
@@ -33,3 +37,7 @@ This project extends the blog application by adding user authentication features
     ```
 6.  Open your browser and go to `http://127.0.0.1:8000/accounts/register/` to create a new account.
 7.  Go to `http://127.0.0.1:8000/accounts/login/` to log in.
+
+## Screenshots
+*(Add screenshots of your application here)*
+
