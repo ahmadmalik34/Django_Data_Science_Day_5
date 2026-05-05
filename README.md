@@ -16,7 +16,7 @@
 
 ## 🎯 Overview
 
-Build a complete user authentication system with registration, login, logout, profiles, and user-specific blog post creation/editing.
+Build a complete user authentication system with registration, login, logout, user profiles, and user-specific blog post creation/editing.
 
 **Production-grade authentication powered by Django's built-in auth system.**
 
